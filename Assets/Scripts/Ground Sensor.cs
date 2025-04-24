@@ -5,32 +5,32 @@ using UnityEngine;
 public class GroundSensor : MonoBehaviour
 {
 
-    public bool _isGrounded;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool isGrounded;
+    public float jumpBuffering = 1f;
+    private PlayerController _playerController;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        _playerController = GetComponentInParent<PlayerController>();
     }
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        if(collider.gameObject.layer == 3 || collider.gameObject.CompareTag("Dragon"))
+        if(collider.gameObject.layer == 3)
         {
-            _isGrounded = true;
+            isGrounded = true;
+            _playerController.doubleJump = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if(collider.gameObject.layer == 3 || collider.gameObject.CompareTag("Dragon"))
-        {
-            _isGrounded = false;
-        }
+        //StartCoroutine(JumpBuffering());
+        isGrounded = false;
+    }
+
+    IEnumerator JumpBuffering()
+    {
+        yield return new WaitForSeconds(jumpBuffering); 
     }
 }

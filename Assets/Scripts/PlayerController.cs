@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidBody;
     private GroundSensor _groundSensor;
     private Animator _animator;
-
     private float inputHorizontal;
+    public bool doubleJump = true;
 
 
     void Awake()
@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
         Sprint();
 
         Jump();
+
+        DoubleJump();
 
         //Dash();
         
@@ -54,11 +56,11 @@ public class PlayerController : MonoBehaviour
 
     void Sprint()
     {
-        if(Input.GetButton("Sprint"))
+        if(Input.GetButton("Sprint") && _groundSensor.isGrounded)
         {
             saruSprint = 1.75f;
         }
-        else if(!Input.GetButtonUp("Sprint"))
+        else if(!Input.GetButtonUp("Sprint") && _groundSensor.isGrounded)
         {
             saruSprint = 1;
         }
@@ -66,10 +68,20 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump") && _groundSensor._isGrounded)
+        if(Input.GetButtonDown("Jump") && _groundSensor.isGrounded)
         {
             _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
         }
+    }
+
+    void DoubleJump()
+    {
+        if(Input.GetButtonDown("Jump") && !_groundSensor.isGrounded && doubleJump)
+        {
+            _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
+            doubleJump = false;
+        }
+
     }
 
     void Rotation()
