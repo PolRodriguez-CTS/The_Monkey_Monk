@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e5528d2747a67e43ae938e794b0c4c5
+guid: c7563426a50f1784b8a4500373f70d66
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -98,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Monkey Walking_0
+      name: Parte Dos_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 9
+        x: 3
+        y: 80
         width: 32
-        height: 46
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ead6f9d6ddad69447a149ab11c4234e5
-      internalID: -1872993207
+      spriteID: b524c67e8b4b3eb4bbe070c07322801f
+      internalID: 521735287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monkey Walking_1
+      name: Parte Dos_1
       rect:
         serializedVersion: 2
-        x: 77
-        y: 9
-        width: 38
-        height: 43
+        x: 39
+        y: 80
+        width: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4f805c3c060cd248b5cc90d98e90275
-      internalID: 1174445366
+      spriteID: 782717d9223e9c441a16723977f50ab6
+      internalID: 1432244035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monkey Walking_2
+      name: Parte Dos_2
       rect:
         serializedVersion: 2
-        x: 133
-        y: 9
-        width: 53
-        height: 46
+        x: 75
+        y: 80
+        width: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a69bad03b78fa84e805511c94b1c3af
-      internalID: -988499208
+      spriteID: 571b5a0f259cbeb4e801a800ca0240c3
+      internalID: 1887696921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monkey Walking_3
+      name: Parte Dos_3
       rect:
         serializedVersion: 2
-        x: 205
-        y: 9
-        width: 37
-        height: 44
+        x: 5
+        y: 46
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 040f297ef8295cc4dac0d457547acfff
-      internalID: 102056083
+      spriteID: 4b37f663aa0497041918b00aa3bc70de
+      internalID: 993088193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Parte Dos_4
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 46
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf25fb4ee806fe4898d214b0e6aef74
+      internalID: -1091231151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Parte Dos_5
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 46
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3ecbbf9716421418d043e67994ff76
+      internalID: 1636464480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Parte Dos_6
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 12
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d3a7ee420b7fc2419d5e633c90d2bf0
+      internalID: -1087938427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Parte Dos_7
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 12
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062d0e90808bf4f48b9638ef490bbe3d
+      internalID: 1704716580
       vertices: []
       indices: 
       edges: []
@@ -204,10 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Monkey Walking_0: -1872993207
-      Monkey Walking_1: 1174445366
-      Monkey Walking_2: -988499208
-      Monkey Walking_3: 102056083
+      Parte Dos_0: 521735287
+      Parte Dos_1: 1432244035
+      Parte Dos_2: 1887696921
+      Parte Dos_3: 993088193
+      Parte Dos_4: -1091231151
+      Parte Dos_5: 1636464480
+      Parte Dos_6: -1087938427
+      Parte Dos_7: 1704716580
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

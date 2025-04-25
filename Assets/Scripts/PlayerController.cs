@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
-    public float saruSpeed = 4;
-    public float saruJump = 20;
+    private float _inputHorizontal;
+
+    [Header("Movement")]
+    public float saruSpeed = 7;
     public float saruSprint = 1;
+    
+    [Header("Jump")]
+    public bool doubleJump = true;
+    public float saruJump = 12;
+
+    [Header("Dash")]
+    [SerializeField] private float _dashForce = 20;
+    [SerializeField] private float _dashDuration = 0.2f;
+    [SerializeField] private float _dashCoolDown = 2f;
+    private bool _canDash = true;
+    private bool _isDashing = false;
 
     
 
     private Rigidbody2D _rigidBody;
     private GroundSensor _groundSensor;
     private Animator _animator;
-    private float inputHorizontal;
-    public bool doubleJump = true;
+
+    
+
+    
 
 
     void Awake()
@@ -27,38 +41,57 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        if(_isDashing)
+        {
+            return;
+        } 
 
-        Rotation();
+        _inputHorizontal = Input.GetAxisRaw("Horizontal");
+
+        Movement();
         
         Sprint();
 
-        Jump();
+        if(Input.GetButtonDown("Jump"))
+        {
+            if(_groundSensor.isGrounded || _groundSensor.canDoubleJump)
+            {
+                Jump();
+            }
+            
+        }
 
-        DoubleJump();
+        //Condicion del Dash
+        if(Input.GetButtonDown("Dash") && _canDash)
+        {
+            StartCoroutine(Dash());
+        }
 
-        //Dash();
+        
+
         
     }
 
     void FixedUpdate()
-    {
-        Movement();
+    {        
+        if(_isDashing)
+        {
+            return;
+        }
+        _rigidBody.velocity = new Vector2(_inputHorizontal * saruSpeed * saruSprint, _rigidBody.velocity.y);
     }
+
+
 
 
  
     //Lista de acciones
-    void Movement()
-    {
-        _rigidBody.velocity = new Vector2(inputHorizontal * saruSpeed * saruSprint, _rigidBody.velocity.y);
-    }
 
     void Sprint()
     {
         if(Input.GetButton("Sprint") && _groundSensor.isGrounded)
         {
-            saruSprint = 1.75f;
+            saruSprint = 1.50f;
         }
         else if(!Input.GetButtonUp("Sprint") && _groundSensor.isGrounded)
         {
@@ -68,31 +101,29 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump") && _groundSensor.isGrounded)
+        if(!_groundSensor.isGrounded)
         {
-            _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
+            _groundSensor.canDoubleJump = false;
+            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, 0);
+
         }
+        _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
     }
 
-    void DoubleJump()
+    void Movement()
     {
-        if(Input.GetButtonDown("Jump") && !_groundSensor.isGrounded && doubleJump)
-        {
-            _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
-            doubleJump = false;
-        }
 
-    }
+        _animator.SetBool("IsJumping", !_groundSensor.isGrounded); 
 
-    void Rotation()
-    {
-        if(inputHorizontal > 0)
+        if(_inputHorizontal > 0)
         {
+            _rigidBody.velocity = new Vector2(_inputHorizontal * saruSpeed * saruSprint, _rigidBody.velocity.y);
             _animator.SetBool("IsRunning", true);
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if(inputHorizontal < 0)
+        else if(_inputHorizontal < 0)
         {
+            _rigidBody.velocity = new Vector2(_inputHorizontal * saruSpeed * saruSprint, _rigidBody.velocity.y);
             _animator.SetBool("IsRunning", true);
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
@@ -104,15 +135,22 @@ public class PlayerController : MonoBehaviour
         
         
     }
-    
 
-        
-    
-    /*void Dash()
+
+    IEnumerator Dash()
     {
-        if(Input.GetButtonDown("Dash"))
-        {
-            _rigidBody.AddForce(Vector2. * saruJump, ForceMode2D.Impulse);
-        }
-    }*/
+        float gravity = _rigidBody.gravityScale;
+        _rigidBody.gravityScale = 0;
+        _rigidBody.velocity = new Vector2(_rigidBody.velocity.x ,0); 
+        
+        
+        _isDashing = true;
+        _canDash = false;
+        _rigidBody.AddForce(transform.right*_dashForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(_dashDuration);
+        _rigidBody.gravityScale = gravity;
+        _isDashing = false;
+        yield return new WaitForSeconds(_dashCoolDown);
+        _canDash = true;
+    }
 }
