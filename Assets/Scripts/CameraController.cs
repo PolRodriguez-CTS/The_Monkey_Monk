@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    private PlayerController _playerController;
     public Transform playerTransform;
     public Vector3 offset;
     public Vector2 maxPosition;
     public Vector2 minPosition;
     public float interpolationRatio = 0.15f;
 
+    void Awake()
+    {
+        _playerController = FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
+    }
+
+
 
     void FixedUpdate()
     {
+        if(playerTransform == null || _playerController.isDead)
+        {
+            return;
+        }
+
         Vector3 desiredPosition = playerTransform.position + offset;
         float clampX = Mathf.Clamp(desiredPosition.x, minPosition.x, maxPosition.x);
         float clampY = Mathf.Clamp(desiredPosition.y, minPosition.y, maxPosition.y);

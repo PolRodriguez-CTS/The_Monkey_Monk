@@ -113,9 +113,9 @@ TextureImporter:
       name: Monkey Attack_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 9
         y: 9
-        width: 44
+        width: 43
         height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -134,9 +134,9 @@ TextureImporter:
       name: Monkey Attack_1
       rect:
         serializedVersion: 2
-        x: 67
+        x: 69
         y: 9
-        width: 48
+        width: 51
         height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}

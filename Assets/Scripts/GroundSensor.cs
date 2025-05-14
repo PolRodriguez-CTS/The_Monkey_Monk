@@ -9,6 +9,7 @@ public class GroundSensor : MonoBehaviour
     public bool canDoubleJump = true;
     private PlayerController _playerController;
     
+     
 
     void Awake()
     {
@@ -21,6 +22,10 @@ public class GroundSensor : MonoBehaviour
         {
             isGrounded = true;
             canDoubleJump = true;
+        }
+        else if(collider.gameObject.CompareTag("Cloud"))
+        {
+            isGrounded = true;
         }
     }
 
