@@ -50,6 +50,7 @@ public class Pollito : MonoBehaviour
         {
             _playerController.TakeDamage(chickDamage);
             StartCoroutine(ChickDeath());
+            //_playerController.Death();
         }
     }
 

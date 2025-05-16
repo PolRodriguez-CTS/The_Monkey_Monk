@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Life")]
-    [SerializeField] private float maxHealth = 20;
+    private float maxHealth = 5;
     [SerializeField] private float currentHealth;
     [SerializeField] private float deathDelay = 3; 
     public bool isDead = false;
@@ -171,6 +171,8 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+
+        Death();
     }
 
     void FixedUpdate()
@@ -182,13 +184,13 @@ public class PlayerController : MonoBehaviour
         _rigidBody.velocity = new Vector2(_inputHorizontal * saruSpeed * saruSprint, _rigidBody.velocity.y);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    /*void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Chick"))
         {
             Death();
         }
-    }
+    }*/
 
 
 
@@ -310,6 +312,7 @@ public class PlayerController : MonoBehaviour
             if(_pollitoScript != null)
             {
                 StartCoroutine(_pollitoScript.ChickDeath());
+                _gameManager.AddPoints(_gameManager.pollitoPoints);
             }
         }
     }
