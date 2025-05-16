@@ -11,7 +11,7 @@ public class Pollito : MonoBehaviour
     public AudioClip _chickDeathSFX;
     private Rigidbody2D _rigidBody;
     private BoxCollider2D _boxCollider;
-    private GrullaTrap _grullaTrap;
+    public GrullaTrap _grullaTrap;
     private SpriteRenderer _spriteRenderer;
     private PlayerController _playerController;
     public float chickDamage = 1;
@@ -20,15 +20,15 @@ public class Pollito : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
-        _grullaTrap = FindObjectOfType<GrullaTrap>().GetComponent<GrullaTrap>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audioSource = GetComponent<AudioSource>();
         _playerController = FindObjectOfType<PlayerController>();
+        _chickDirection = _grullaTrap.plumillaDirection;
     }
 
     void Start()
     {
-        _chickDirection = _grullaTrap.plumillaDirection;
+        
     }
    
     void FixedUpdate()

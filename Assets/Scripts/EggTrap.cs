@@ -16,6 +16,7 @@ public class EggTrap : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private float eggDamage = 0.5f;
     private PlayerController _playerController;
+    public GrullaTrap _grullaDirection;
     public Transform _grullaRotation;
     
     
@@ -49,7 +50,11 @@ public class EggTrap : MonoBehaviour
         _spriteRenderer.enabled = false;
         _boxCollider.enabled = false;
         _rigidBody.gravityScale = 0;
-        Instantiate(_pollito, _eggPostition.position, _grullaRotation.rotation);
+
+        GameObject pollito = Instantiate(_pollito, _eggPostition.position, _grullaRotation.rotation);
+        Pollito _pollitoScript = _pollito.GetComponent<Pollito>();
+        _pollitoScript._grullaTrap = _grullaDirection;
+
         _audioSource.PlayOneShot(_eggCrackSFX);
         yield return new WaitForSeconds(crackDelay);
         Destroy(gameObject);

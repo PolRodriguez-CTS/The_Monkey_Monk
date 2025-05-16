@@ -44,7 +44,10 @@ public class GrullaTrap : MonoBehaviour
 
         if(collider.gameObject.CompareTag("Player"))
         {
-           Instantiate(_eggPrefab, _eggGeneration.position, _eggGeneration.rotation);
+           GameObject huevo = Instantiate(_eggPrefab, _eggGeneration.position, _eggGeneration.rotation);
+           EggTrap _eggScript = huevo.GetComponent<EggTrap>();
+           _eggScript._grullaDirection = this;
+           _eggScript._grullaRotation = transform;
         }
     }
     
