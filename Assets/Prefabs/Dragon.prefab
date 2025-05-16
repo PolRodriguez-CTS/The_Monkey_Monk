@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9185456432651825394}
   - component: {fileID: 8175185275156176725}
   - component: {fileID: 5805105543825560957}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 9125794604685848513}
   - component: {fileID: 9145794593806749175}
   - component: {fileID: 6113051400201306464}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dragon1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 332597577678598478}
   - component: {fileID: 8875749456739445065}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dragon2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

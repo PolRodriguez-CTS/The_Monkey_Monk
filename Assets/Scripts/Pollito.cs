@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Pollito : MonoBehaviour
 {
-   
     private float _chickSpeed = 5;
     private float _chickDirection;
     private AudioSource _audioSource;
@@ -14,7 +13,8 @@ public class Pollito : MonoBehaviour
     private BoxCollider2D _boxCollider;
     private GrullaTrap _grullaTrap;
     private SpriteRenderer _spriteRenderer;
-
+    private PlayerController _playerController;
+    public float chickDamage = 1;
 
     void Awake()
     {
@@ -23,8 +23,8 @@ public class Pollito : MonoBehaviour
         _grullaTrap = FindObjectOfType<GrullaTrap>().GetComponent<GrullaTrap>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audioSource = GetComponent<AudioSource>();
+        _playerController = FindObjectOfType<PlayerController>();
     }
-
 
     void Start()
     {
@@ -34,6 +34,23 @@ public class Pollito : MonoBehaviour
     void FixedUpdate()
     {
         _rigidBody.velocity = new Vector2(_chickSpeed * _chickDirection, _rigidBody.velocity.y);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.layer == 6)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+         if(collision.gameObject.layer == 8)
+        {
+            _playerController.TakeDamage(chickDamage);
+            StartCoroutine(ChickDeath());
+        }
     }
 
     public IEnumerator ChickDeath()
@@ -46,14 +63,6 @@ public class Pollito : MonoBehaviour
         _audioSource.PlayOneShot(_chickDeathSFX);
         yield return new WaitForSeconds(chickDeathDelay);
         Destroy(gameObject);
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.gameObject.layer == 6)
-        {
-            Destroy(gameObject);
-        }
     }
 }
 

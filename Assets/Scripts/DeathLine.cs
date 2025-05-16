@@ -18,7 +18,7 @@ public class DeathLine : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("Player"))
         {
-            _playerController.Death();
+            StartCoroutine(_playerController.MonkeyDeath());
         }
     }
 

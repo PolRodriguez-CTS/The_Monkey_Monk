@@ -8720,7 +8720,7 @@ Transform:
   m_GameObject: {fileID: 215938381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.61, y: 14.93, z: 0}
+  m_LocalPosition: {x: 54.38, y: 14.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8815,7 +8815,6 @@ MonoBehaviour:
   drakeSpawn: {fileID: 572579021}
   saru: {fileID: 940900433}
   timer: 0
-  attackRange: 5
 --- !u!1 &216458651
 GameObject:
   m_ObjectHideFlags: 0
@@ -20362,6 +20361,10 @@ PrefabInstance:
       value: Saru
       objectReference: {fileID: 0}
     - target: {fileID: 2518063785894579230, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
+      propertyPath: _bananaAnimation
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518063785894579230, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
       propertyPath: _enemyLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -20369,13 +20372,21 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 4885048649761569990, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
+      propertyPath: m_Size.y
+      value: 2.3902516
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885048649761569990, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.1959426
+      objectReference: {fileID: 0}
     - target: {fileID: 5597699848347372511, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.58
+      value: 44.68
       objectReference: {fileID: 0}
     - target: {fileID: 5597699848347372511, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.94
+      value: 15.11
       objectReference: {fileID: 0}
     - target: {fileID: 5597699848347372511, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23041,7 +23052,7 @@ Transform:
   m_GameObject: {fileID: 572579020}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -2.46, y: 2.45, z: 0}
+  m_LocalPosition: {x: -0.84, y: 2.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -70747,6 +70758,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1822707166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1822707167}
+  m_Layer: 0
+  m_Name: --------CANVAS---------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1822707167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822707166}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.9134057, y: 23.899927, z: -0.14021567}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1824396870
 GameObject:
   m_ObjectHideFlags: 0
@@ -81575,3 +81617,4 @@ SceneRoots:
   - {fileID: 2063137738}
   - {fileID: 326176723}
   - {fileID: 215938385}
+  - {fileID: 1822707167}

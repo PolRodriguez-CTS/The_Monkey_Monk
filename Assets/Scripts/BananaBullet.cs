@@ -17,11 +17,30 @@ public class BananaBullet : MonoBehaviour
 
     void Start()
     {
-        _rigidBody.velocity = new Vector2(_bananaSpeed, _rigidBody.velocity.y);
+        _rigidBody.AddForce(transform.right * _bananaSpeed, ForceMode2D.Impulse);
     }
     
     void FixedUpdate()
     {
         transform.Rotate(0,0,speed * Time.deltaTime);
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.layer == 3)
+        {
+            BananaDeath();
+        }
+        if(collider.gameObject.layer == 6)
+        {
+            //llamar la función de muerte o de daño para enemigos
+        }
+    }
+
+    void BananaDeath()
+    {
+        Destroy(gameObject);
+    }
+
+  
 }

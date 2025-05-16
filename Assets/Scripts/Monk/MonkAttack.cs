@@ -9,9 +9,9 @@ public class MonkAttack : MonoBehaviour
     public Transform drakeSpawn;
     public Transform saru;
     public float timer = 0;
-    private float cooldown = 3;
-    private bool _playerInRange = false;
-    public float attackRange = 4;
+    private float cooldown = 5;
+    //private bool _playerInRange = false;
+    private float attackRange = 20;
 
     void Awake()
     {
@@ -22,6 +22,7 @@ public class MonkAttack : MonoBehaviour
     {
         timer = cooldown;
     }
+    
 
     void Update()
     {
@@ -32,16 +33,22 @@ public class MonkAttack : MonoBehaviour
 
         if(Vector3.Distance(transform.position, saru.position) <= attackRange)
         {
-            if(timer >= cooldown)
-            {
-                Attack();
-            }
+            Vector3 directionToPlayer = saru.position - transform.position;
+            float angleToPlayer = Vector3.Angle(transform.right, directionToPlayer);
 
-            if(_playerInRange)
+            if(angleToPlayer > 100)
             {
                 timer += Time.deltaTime;
-            }
+                if(timer >= cooldown)
+                {
+                    Attack();
+                }
+            } 
         }
+        else
+            {
+                timer = 0;
+            }
     }
 
     void OnTriggerStay2D(Collider2D collider)
@@ -49,16 +56,16 @@ public class MonkAttack : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    /*void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.layer == 8)
         {
             _playerInRange = true;
         }
         
-    }
+    }*/
     
-    void OnTriggerExit2D(Collider2D collider)
+    /*void OnTriggerExit2D(Collider2D collider)
     {
         if(collider.gameObject.layer == 8)
         {
@@ -66,7 +73,7 @@ public class MonkAttack : MonoBehaviour
             timer = 0;
         }
         
-    }
+    }*/
 
     void Attack()
     {

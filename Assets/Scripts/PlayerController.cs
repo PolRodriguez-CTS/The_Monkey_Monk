@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     [Header("Shoot")]
     [SerializeField] private GameObject _bananaPrefab;
     [SerializeField] private Transform _bananaSpawn;
-    [SerializeField] private float _bananaAnimation = 1;
+    [SerializeField] private float _bananaAnimation = 0.5f;
 
 
     [Header("Life")]
@@ -92,10 +92,15 @@ public class PlayerController : MonoBehaviour
         //_pollitoScript = GetComponent<Pollito>();
         
     }
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+    }
    
     void Update()
     {
-
+        Debug.Log(currentHealth);
 
         if(isDead)
         {
@@ -184,10 +189,6 @@ public class PlayerController : MonoBehaviour
             Death();
         }
     }
-
-
-
-
 
 
 
@@ -290,14 +291,11 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
-        isDead = true;
-        _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
-        _animator.SetTrigger("IsDead");
-        _boxCollider.enabled = false;
-
-        StartCoroutine(DeathSound());
+        if(currentHealth <= 0)
+        {
+            StartCoroutine(MonkeyDeath());
+        }  
     }
-
 
     void NormalAttack()
     {
@@ -307,8 +305,12 @@ public class PlayerController : MonoBehaviour
         foreach(Collider2D enemy in enemies)
         {
             Pollito _pollitoScript = enemy.GetComponent<Pollito>();
+
             //_pollitoScript.ChickDeath();
-            StartCoroutine(_pollitoScript.ChickDeath());
+            if(_pollitoScript != null)
+            {
+                StartCoroutine(_pollitoScript.ChickDeath());
+            }
         }
     }
 
@@ -316,8 +318,6 @@ public class PlayerController : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-
-
         //Gizmos.DrawWireBox(_groundSpawn.position, _groundRadius);
         Gizmos.DrawWireSphere(_hitBoxPosition.position, _attackRadius);
     }
@@ -332,20 +332,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    /*void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
-       
+        currentHealth -= damage;
     }
-    */
 
-    IEnumerator DeathSound()
+    public IEnumerator MonkeyDeath()
     {
+        isDead = true;
+        _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
+        _animator.SetTrigger("IsDead");
+        _boxCollider.enabled = false;
         _audioSource.PlayOneShot(_deathSFX);
         yield return new WaitForSeconds(deathDelay);
-
         Destroy(gameObject);
     }
-   
-
-
 }
