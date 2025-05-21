@@ -15,6 +15,7 @@ public class EggTrap : MonoBehaviour
     public AudioClip _eggCrackSFX;
     private SpriteRenderer _spriteRenderer;
     private float eggDamage = 0.5f;
+    private float eggLifeTaken = 0.125f;
     private PlayerController _playerController;
     public GrullaTrap _grullaDirection;
     public Transform _grullaRotation;

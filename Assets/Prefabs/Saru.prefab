@@ -214,22 +214,24 @@ MonoBehaviour:
   _dashCoolDown: 2
   _canDash: 1
   _isDashing: 0
-  _clonSpawn: {fileID: 8601442930328864655}
-  _clonPrefab: {fileID: 1213845939530349835}
-  _isCloned: 0
   _isNormalAttacking: 0
   _hitBoxPosition: {fileID: 996048803437397283}
   _attackRadius: 1
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   _bananaPrefab: {fileID: 1310282794209225002, guid: e6e6375477599ea4eafd2331198e3bd1, type: 3}
   _bananaSpawn: {fileID: 5410406282848263952}
-  _bananaAnimation: 1
-  maxHealth: 20
+  _bananaAnimation: 0.5
+  isDamaged: 0
   currentHealth: 0
   deathDelay: 3
+  currentLifes: 0
+  maxLifes: 3
+  _saruPrefab: {fileID: 1213845939530349835}
+  playerSpawn: {fileID: 0}
   isDead: 0
+  damageImpulse: 5
   _deathSFX: {fileID: 8300000, guid: 54004850e898e144b968d96f4d1d2655, type: 3}
   _punchSFX: {fileID: 8300000, guid: c8d8814f857c4a843bc6d880cbcc5c63, type: 3}
   _shootSFX: {fileID: 8300000, guid: cb9e4307f120da9429b10758d36ca7dd, type: 3}
@@ -294,7 +296,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22478151, y: 1.4341062}
+  m_Offset: {x: 0.22478151, y: 1.1959426}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -305,7 +307,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8747187, y: 2.8665788}
+  m_Size: {x: 1.8747187, y: 2.3902516}
   m_EdgeRadius: 0
 --- !u!95 &3079432160759169065
 Animator:
@@ -354,7 +356,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.325
+  m_Volume: 0.16
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -629,7 +631,7 @@ Transform:
   m_GameObject: {fileID: 7034590607794089072}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.75, y: 1.25, z: 0}
+  m_LocalPosition: {x: 1.75, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2122,11 +2124,10 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -1516885715, guid: f9cc4e06e5390d74ca5e6bfa2c05e045, type: 3}
-    - sprite: {fileID: 134452909, guid: f9cc4e06e5390d74ca5e6bfa2c05e045, type: 3}
-    - sprite: {fileID: 1794800881, guid: f9cc4e06e5390d74ca5e6bfa2c05e045, type: 3}
-    - sprite: {fileID: -99130016, guid: f9cc4e06e5390d74ca5e6bfa2c05e045, type: 3}
-    - sprite: {fileID: -1054822741, guid: f9cc4e06e5390d74ca5e6bfa2c05e045, type: 3}
+    - sprite: {fileID: 60266952, guid: d75411323c923d14eb89ba050463880b, type: 3}
+    - sprite: {fileID: 700347865, guid: d75411323c923d14eb89ba050463880b, type: 3}
+    - sprite: {fileID: -693101498, guid: d75411323c923d14eb89ba050463880b, type: 3}
+    - sprite: {fileID: -1127342400, guid: d75411323c923d14eb89ba050463880b, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

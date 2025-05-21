@@ -10,6 +10,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     public void TryAgain()
     {
         SceneManager.LoadScene(2);

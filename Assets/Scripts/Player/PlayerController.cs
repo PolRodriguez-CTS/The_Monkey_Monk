@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerController : MonoBehaviour
@@ -30,20 +31,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool _isDashing = false;
 
 
-    [Header("Clon")]
-    [SerializeField] private Transform _clonSpawn;
-    [SerializeField] private GameObject _clonPrefab;
-    [SerializeField] private bool _isCloned;
-
-
-    /*[Header("Ground")]
-    [SerializeField] private LayerMask _ground;
-    [SerializeField] private bool _isGrounded;
-    [SerializeField] private bool _canDoubleJump = true;
-    [SerializeField] private float _groundRadius = 1;
-    [SerializeField] private Transform _groundSpawn;*/
-
-
     [Header("Attack")]
     [SerializeField] private bool _isNormalAttacking = false;
     [SerializeField] private Transform _hitBoxPosition;
@@ -60,9 +47,15 @@ public class PlayerController : MonoBehaviour
     private float maxHealth = 5;
     public bool isDamaged = false;
     [SerializeField] private float currentHealth;
-    [SerializeField] private float deathDelay = 3; 
+    [SerializeField] private float deathDelay = 3;
+    //[SerializeField] private int currentLifes;
+    //[SerializeField] private int maxLifes = 3;
+    //[SerializeField] private GameObject _saruPrefab;
+    //[SerializeField] private Transform playerSpawn;
     public bool isDead = false;
     public float damageImpulse = 5;
+    //public bool isReviving = false;
+    
 
 
     //Componentes Inspector
@@ -72,13 +65,15 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private GameManager _gameManager;
+    private MenuManager _menuManager;
     private AudioSource _audioSource;
     public AudioClip _deathSFX;
     public AudioClip _punchSFX;
     public AudioClip _shootSFX;
     public AudioClip _dashSFX;
     public AudioClip _jumpSFX;
-    //private Pollito _pollitoScript;
+
+    //public Image healthBarSprite;
 
 
     void Awake()
@@ -89,6 +84,7 @@ public class PlayerController : MonoBehaviour
         _groundSensor = GetComponentInChildren<GroundSensor>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        _menuManager = FindObjectOfType<MenuManager>().GetComponent<MenuManager>();
         _audioSource = GetComponent<AudioSource>();
         //_pollitoScript = GetComponent<Pollito>();
         
@@ -97,6 +93,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        //healthBarSprite.fillAmount = 1;
+        //currentLifes = maxLifes;
     }
    
     void Update()
@@ -108,10 +106,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if(isDead)
+        /*if(isDead)
         {
             return;
-        }
+        }*/
 
         if(isDamaged)
         {
@@ -364,12 +362,26 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator MonkeyDeath()
     {
-        isDead = true;
+        //currentLifes--;
         _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
         _animator.SetTrigger("IsDead");
         _boxCollider.enabled = false;
         _audioSource.PlayOneShot(_deathSFX);
         yield return new WaitForSeconds(deathDelay);
+        /*if(currentLifes > 0)
+        {
+            Instantiate(_saruPrefab, playerSpawn.position, playerSpawn.rotation);
+        }
+        else if(currentLifes <= 0)
+        {
+            _menuManager.GameOver();
+            isDead = true;
+        }*/
         Destroy(gameObject);
     }
+
+    /*public void HealthBar()
+    {
+        healthBarSprite.fillAmount --;
+    }*/
 }
