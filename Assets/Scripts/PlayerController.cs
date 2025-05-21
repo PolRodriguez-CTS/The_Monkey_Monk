@@ -31,6 +31,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool _isDashing = false;
 
 
+    [Header("Clon")]
+    [SerializeField] private Transform _clonSpawn;
+    [SerializeField] private GameObject _clonPrefab;
+    [SerializeField] private bool _isCloned;
+
+
+    /*[Header("Ground")]
+    [SerializeField] private LayerMask _ground;
+    [SerializeField] private bool _isGrounded;
+    [SerializeField] private bool _canDoubleJump = true;
+    [SerializeField] private float _groundRadius = 1;
+    [SerializeField] private Transform _groundSpawn;*/
+
+
     [Header("Attack")]
     [SerializeField] private bool _isNormalAttacking = false;
     [SerializeField] private Transform _hitBoxPosition;
@@ -44,18 +58,13 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Life")]
-    private float maxHealth = 5;
+    private float maxHealth = 4;
     public bool isDamaged = false;
     [SerializeField] private float currentHealth;
-    [SerializeField] private float deathDelay = 3;
-    //[SerializeField] private int currentLifes;
-    //[SerializeField] private int maxLifes = 3;
-    //[SerializeField] private GameObject _saruPrefab;
-    //[SerializeField] private Transform playerSpawn;
+    [SerializeField] private float deathDelay = 3; 
     public bool isDead = false;
     public float damageImpulse = 5;
-    //public bool isReviving = false;
-    
+    public Image healthBarImage;
 
 
     //Componentes Inspector
@@ -73,9 +82,6 @@ public class PlayerController : MonoBehaviour
     public AudioClip _dashSFX;
     public AudioClip _jumpSFX;
 
-    //public Image healthBarSprite;
-
-
     void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -84,17 +90,13 @@ public class PlayerController : MonoBehaviour
         _groundSensor = GetComponentInChildren<GroundSensor>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _menuManager = FindObjectOfType<MenuManager>().GetComponent<MenuManager>();
         _audioSource = GetComponent<AudioSource>();
-        //_pollitoScript = GetComponent<Pollito>();
-        
+        _menuManager = FindObjectOfType<MenuManager>().GetComponent<MenuManager>();
     }
 
     void Start()
     {
         currentHealth = maxHealth;
-        //healthBarSprite.fillAmount = 1;
-        //currentLifes = maxLifes;
     }
    
     void Update()
@@ -106,10 +108,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        /*if(isDead)
+        if(isDead)
         {
             return;
-        }*/
+        }
 
         if(isDamaged)
         {
@@ -135,9 +137,6 @@ public class PlayerController : MonoBehaviour
         Movement();
        
         Sprint();
-
-
-        //Clon();
 
 
         if(Input.GetButtonDown("Shoot"))
@@ -192,17 +191,6 @@ public class PlayerController : MonoBehaviour
         _rigidBody.velocity = new Vector2(_inputHorizontal * saruSpeed * saruSprint, _rigidBody.velocity.y);
     }
 
-    /*void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Chick"))
-        {
-            Death();
-        }
-    }*/
-
-
-
-
     //Lista de acciones
     void Sprint()
     {
@@ -215,7 +203,6 @@ public class PlayerController : MonoBehaviour
             saruSprint = 1;
         }
     }
-
 
     void Jump()
     {
@@ -276,29 +263,6 @@ public class PlayerController : MonoBehaviour
         _canDash = true;
     }
 
-
-    /*void Clon()
-    {
-        if(Input.GetButtonDown("Clon"))
-        {
-            _rigidBody.AddForce(transform.right*_dashForce, ForceMode2D.Impulse);
-            Instantiate(_clonPrefab.gameObject, _clonSpawn.position, _clonSpawn.rotation);
-            _isCloned = true;
-        }
-    }
-    */
-
-
-    /*void Ground()
-    {
-        Collision2D[] collision = Physics2D.OverlapBox(_groundSpawn.position, _groundRadius, _ground);
-        foreach(Collision2D groundeded in collision)
-        {
-            _isGrounded = true;
-        }
-    }*/
-
-
     public void Death()
     {
         if(currentHealth <= 0)
@@ -325,14 +289,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         //Gizmos.DrawWireBox(_groundSpawn.position, _groundRadius);
         Gizmos.DrawWireSphere(_hitBoxPosition.position, _attackRadius);
     }
-
 
     IEnumerator Shoot()
     {
@@ -342,15 +304,18 @@ public class PlayerController : MonoBehaviour
         _audioSource.PlayOneShot(_shootSFX);
     }
 
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         _animator.SetTrigger("IsHurt");
         isDamaged = true;
         _inputHorizontal = 0;
-        _rigidBody.AddForce(Vector2.up * damageImpulse, ForceMode2D.Impulse);
+        if(currentHealth - damage > 0 && currentHealth - damage != 0)
+        {
+            _rigidBody.AddForce(Vector2.up * damageImpulse, ForceMode2D.Impulse);
+        }
         StartCoroutine(DamageExit());
+        UpdateHealthBar();
     }
 
     IEnumerator DamageExit()
@@ -362,26 +327,18 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator MonkeyDeath()
     {
-        //currentLifes--;
+        isDead = true;
         _rigidBody.AddForce(Vector2.up * saruJump, ForceMode2D.Impulse);
         _animator.SetTrigger("IsDead");
         _boxCollider.enabled = false;
         _audioSource.PlayOneShot(_deathSFX);
         yield return new WaitForSeconds(deathDelay);
-        /*if(currentLifes > 0)
-        {
-            Instantiate(_saruPrefab, playerSpawn.position, playerSpawn.rotation);
-        }
-        else if(currentLifes <= 0)
-        {
-            _menuManager.GameOver();
-            isDead = true;
-        }*/
+        _menuManager.GameOver();
         Destroy(gameObject);
     }
 
-    /*public void HealthBar()
+    public void UpdateHealthBar()
     {
-        healthBarSprite.fillAmount --;
-    }*/
+        healthBarImage.fillAmount = currentHealth / maxHealth;
+    }
 }
