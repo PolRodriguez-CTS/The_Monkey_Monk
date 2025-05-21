@@ -9728,7 +9728,8 @@ Transform:
   m_LocalPosition: {x: 6.2863245, y: 11.44532, z: -0.21846898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 415698121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235512213
@@ -17183,6 +17184,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &415698120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415698121}
+  m_Layer: 0
+  m_Name: Player Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415698121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415698120}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.21, y: 6.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 232424561}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &416465685
 GameObject:
   m_ObjectHideFlags: 0
@@ -20565,54 +20597,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 996048803437397283, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.54
-      objectReference: {fileID: 0}
     - target: {fileID: 1213845939530349835, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
       propertyPath: m_Name
       value: Saru
       objectReference: {fileID: 0}
     - target: {fileID: 2518063785894579230, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: _bananaAnimation
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2518063785894579230, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: _enemyLayer.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748857835083454724, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: m_Volume
-      value: 0.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3240659123331406940, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: UVModule.sprites.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3240659123331406940, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: UVModule.sprites.Array.data[0].sprite
+      propertyPath: playerSpawn
       value: 
-      objectReference: {fileID: 60266952, guid: d75411323c923d14eb89ba050463880b, type: 3}
-    - target: {fileID: 3240659123331406940, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: UVModule.sprites.Array.data[1].sprite
-      value: 
-      objectReference: {fileID: 700347865, guid: d75411323c923d14eb89ba050463880b, type: 3}
-    - target: {fileID: 3240659123331406940, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: UVModule.sprites.Array.data[2].sprite
-      value: 
-      objectReference: {fileID: -693101498, guid: d75411323c923d14eb89ba050463880b, type: 3}
-    - target: {fileID: 3240659123331406940, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: UVModule.sprites.Array.data[3].sprite
-      value: 
-      objectReference: {fileID: -1127342400, guid: d75411323c923d14eb89ba050463880b, type: 3}
-    - target: {fileID: 4885048649761569990, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: m_Size.y
-      value: 2.3902516
-      objectReference: {fileID: 0}
-    - target: {fileID: 4885048649761569990, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
-      propertyPath: m_Offset.y
-      value: 1.1959426
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 415698121}
     - target: {fileID: 5597699848347372511, guid: 4a43b147e1505db478ea8b9d9732b6a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.03
