@@ -58,10 +58,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Life")]
     private float maxHealth = 5;
+    public bool isDamaged = false;
     [SerializeField] private float currentHealth;
     [SerializeField] private float deathDelay = 3; 
     public bool isDead = false;
-   
+    public float damageImpulse = 5;
 
 
     //Componentes Inspector
@@ -101,12 +102,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Debug.Log(currentHealth);
+        
+        if(_gameManager.isPaused)
+        {
+            return;
+        }
 
         if(isDead)
         {
             return;
         }
 
+        if(isDamaged)
+        {
+            return;
+        }
 
         if(_isNormalAttacking)
         {
@@ -338,6 +348,18 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        _animator.SetTrigger("IsHurt");
+        isDamaged = true;
+        _inputHorizontal = 0;
+        _rigidBody.AddForce(Vector2.up * damageImpulse, ForceMode2D.Impulse);
+        StartCoroutine(DamageExit());
+    }
+
+    IEnumerator DamageExit()
+    {
+        float exitTime = 0.5f;
+        yield return new WaitForSeconds(exitTime);
+        isDamaged = false;
     }
 
     public IEnumerator MonkeyDeath()
