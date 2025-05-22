@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public bool isPaused = false;
+    public GameObject pauseCanvas;
     private int numberCoins = 0;
     private int numberPoints = 0;
     public Text coinsText;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     {
         coinsText.text = "x " + numberCoins.ToString();
         pointsText.text = "x " + numberPoints.ToString();
+        pauseCanvas.SetActive(false);
+        Time.timeScale = 1;
     }
     
     void Update()
@@ -35,16 +38,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Pause()
+    public void Pause()
     {
         if(isPaused)
         {
+            pauseCanvas.SetActive(false);
             Time.timeScale = 1;
             isPaused = false;
             _soundManager.ResumeBGM();
         }
         else
         {
+            pauseCanvas.SetActive(true);
             Time.timeScale = 0;
             isPaused = true;
             _soundManager.PauseBGM();

@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private GameManager _gameManager;
     private MenuManager _menuManager;
+    private WinCondition _winCondition;
     private AudioSource _audioSource;
     public AudioClip _deathSFX;
     public AudioClip _punchSFX;
@@ -92,6 +93,7 @@ public class PlayerController : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
         _audioSource = GetComponent<AudioSource>();
         _menuManager = FindObjectOfType<MenuManager>().GetComponent<MenuManager>();
+        _winCondition = FindObjectOfType<WinCondition>().GetComponent<WinCondition>();
     }
 
     void Start()
@@ -101,12 +103,16 @@ public class PlayerController : MonoBehaviour
    
     void Update()
     {
-        Debug.Log(currentHealth);
-        
-        if(_gameManager.isPaused)
+        //Debug.Log(currentHealth);
+        if (_winCondition.hasWinned)
         {
             return;
         }
+        
+        if (_gameManager.isPaused)
+            {
+                return;
+            }
 
         if(isDead)
         {
