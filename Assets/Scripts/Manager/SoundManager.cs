@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         _audioSource.clip = bgm;
+        _audioSource.Play();
+
     }
 
     public void PauseBGM()

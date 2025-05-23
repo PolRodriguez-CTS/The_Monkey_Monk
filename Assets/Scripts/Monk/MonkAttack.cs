@@ -16,6 +16,7 @@ public class MonkAttack : MonoBehaviour
     void Awake()
     {
         _collider2D = GetComponent<Collider2D>();
+        saru = GameObject.FindWithTag("Player").transform;
     }
 
     void Start()

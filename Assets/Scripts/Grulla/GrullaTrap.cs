@@ -10,7 +10,7 @@ public class GrullaTrap : MonoBehaviour
     
     [SerializeField] private Transform _eggGeneration;
     [SerializeField] private GameObject _eggPrefab;
-    [SerializeField] private bool _isFliped = false;
+    [SerializeField] private bool _isFlipped = false;
 
 
     private Rigidbody2D _rigidBody;
@@ -28,18 +28,17 @@ public class GrullaTrap : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.layer == 6 && !_isFliped)
+        if(collider.gameObject.layer == 6 && !_isFlipped)
         {
-            
             transform.rotation = Quaternion.Euler(0, 180, 0);
             plumillaDirection *= -1;
-            _isFliped = true;
+            _isFlipped = true;
         }
-        else if(collider.gameObject.layer == 6 && _isFliped)
+        else if(collider.gameObject.layer == 6 && _isFlipped)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             plumillaDirection *= -1;
-            _isFliped = false;
+            _isFlipped = false;
         }
 
         if(collider.gameObject.CompareTag("Player"))

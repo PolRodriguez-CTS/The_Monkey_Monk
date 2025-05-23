@@ -46,14 +46,15 @@ public class EggTrap : MonoBehaviour
 
     IEnumerator PollitoGenerator()
     {   
+        Pollito _pollitoScript = _pollito.GetComponent<Pollito>();
+        _pollitoScript._grullaTrap = _grullaDirection;
+        GameObject pollito = Instantiate(_pollito, _eggPostition.position, _grullaRotation.rotation);
+        
+        
         float crackDelay = 1;
         _spriteRenderer.enabled = false;
         _boxCollider.enabled = false;
         _rigidBody.gravityScale = 0;
-
-        GameObject pollito = Instantiate(_pollito, _eggPostition.position, _grullaRotation.rotation);
-        Pollito _pollitoScript = _pollito.GetComponent<Pollito>();
-        _pollitoScript._grullaTrap = _grullaDirection;
 
         _audioSource.PlayOneShot(_eggCrackSFX);
         yield return new WaitForSeconds(crackDelay);

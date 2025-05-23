@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: daff0063fbedc264f988af79ad28a86e
+guid: d6962fc7e81fd3f44860f6e6b0e6198b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -98,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Monkey Attack_0
+      name: Rata Walk_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 9
-        width: 43
-        height: 45
+        x: 16
+        y: 13
+        width: 35
+        height: 40
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b11e3f160db7b14dab364db8017e663
-      internalID: 494058659
+      spriteID: 775823afdabaafb4bb723bdd8d5b4bd3
+      internalID: 123657993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monkey Attack_1
+      name: Rata Walk_1
       rect:
         serializedVersion: 2
-        x: 69
-        y: 9
-        width: 51
-        height: 45
+        x: 78
+        y: 13
+        width: 34
+        height: 42
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,113 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb1e3683c5ed8a845aea8aae6b1c2a9b
-      internalID: 1070305356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monkey Attack_2
-      rect:
-        serializedVersion: 2
-        x: 135
-        y: 9
-        width: 47
-        height: 45
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58f89e9364e9c4a41970a75e9fd4d337
-      internalID: -971081413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monkey Attack_3
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 9
-        width: 57
-        height: 46
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ba23309f9bce7c44a6d8411b3cabeae
-      internalID: 785320484
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monkey Attack_4
-      rect:
-        serializedVersion: 2
-        x: 262
-        y: 9
-        width: 56
-        height: 46
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2eefd39f64660f049a4fdff9916c6c1d
-      internalID: -1269579528
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monkey Attack_5
-      rect:
-        serializedVersion: 2
-        x: 326
-        y: 9
-        width: 48
-        height: 45
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7f8a7776a7bb654d8cd2502b8cf2f8f
-      internalID: -1264939737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monkey Attack_6
-      rect:
-        serializedVersion: 2
-        x: 389
-        y: 9
-        width: 49
-        height: 45
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87fdae5e15a63d443add4e3fc000d82c
-      internalID: 1085547922
+      spriteID: e434a868e785f2840af795453bb2b2be
+      internalID: 2000433691
       vertices: []
       indices: 
       edges: []
@@ -267,13 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Monkey Attack_0: 494058659
-      Monkey Attack_1: 1070305356
-      Monkey Attack_2: -971081413
-      Monkey Attack_3: 785320484
-      Monkey Attack_4: -1269579528
-      Monkey Attack_5: -1264939737
-      Monkey Attack_6: 1085547922
+      Rata Walk_0: 123657993
+      Rata Walk_1: 2000433691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

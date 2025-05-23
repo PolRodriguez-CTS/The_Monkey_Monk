@@ -11,28 +11,34 @@ public class GameManager : MonoBehaviour
     public GameObject pauseCanvas;
     private int numberCoins = 0;
     private int numberPoints = 0;
+    private int numberBanana = 0;
     public Text coinsText;
     public Text pointsText;
+    public Text bananaText;
     private SoundManager _soundManager;
     public int pollitoPoints = 100;
     public int coinsPoints = 50;
 
+    private WinCondition _winCondition;
+
     void Awake()
     {
-        _soundManager = FindObjectOfType<SoundManager>();
+        _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
+        _winCondition = FindObjectOfType<WinCondition>().GetComponent<WinCondition>();
     }
 
     void Start()
     {
         coinsText.text = "x " + numberCoins.ToString();
         pointsText.text = "x " + numberPoints.ToString();
+        bananaText.text = "x " + numberPoints.ToString();
         pauseCanvas.SetActive(false);
         Time.timeScale = 1;
     }
     
     void Update()
     {
-        if(Input.GetButtonDown("Pause"))
+        if(Input.GetButtonDown("Pause") && !_winCondition.hasWinned)
         {
             Pause();
         }
@@ -60,6 +66,18 @@ public class GameManager : MonoBehaviour
     {
         numberCoins ++;
         coinsText.text = "x " + numberCoins.ToString();
+    }
+
+    public void AddBanana()
+    {
+        numberBanana ++;
+        bananaText.text = "x " + numberBanana.ToString();
+    }
+
+    public void RemoveBanana()
+    {
+        numberBanana --;
+        bananaText.text = "x " + numberBanana.ToString();
     }
 
     public void AddPoints(int pointsToAdd)
