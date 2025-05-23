@@ -71929,7 +71929,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5307490846718090385, guid: aa5623fe9446e284392368ce56bfe893, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 790745549661784773, guid: aa5623fe9446e284392368ce56bfe893, type: 3}
       propertyPath: m_Color.b
